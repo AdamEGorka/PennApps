@@ -1,7 +1,7 @@
 import pygame
 import sys
 import time 
-import threading
+import random
 
 # Initialize Pygame
 pygame.init()
@@ -104,7 +104,7 @@ def __remove_connection(n1, n2):
     n2.connections.remove(n1)
 
     
-def add_node(x, y, color = BLUE, id = None):
+def add_node(x = None, y = None, color = BLUE, id = None):
     add_event(lambda: __add_node(x, y, color, id))
     
 def __add_node(x, y, color = BLUE, id = None):
@@ -115,6 +115,11 @@ def __add_node(x, y, color = BLUE, id = None):
     
     if id is None:
         highest_id += 1
+        
+    if x is None:
+        x = random.randint(radius, SCREEN_WIDTH - radius)
+    if y is None:
+        y = random.randint(radius, SCREEN_HEIGHT - radius)
 
     new_id = highest_id if id is None else id
     
@@ -139,11 +144,14 @@ def apply_events():
         event()
     events.clear()
 
+
 def visualizer():
     
     # add some nodes for testing :D
-    add_node(100, 100)
-    add_node(200, 200)
+    # add_node(100, 100)
+    # add_node(200, 200)
+    add_node()
+    add_node()
         
     add_connection(0, 1)
     
