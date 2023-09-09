@@ -24,7 +24,8 @@ def main():
     # for i in range(10):
     #     time.sleep(1)
 
-def take_user_func(user_fun, *args, )
+def take_user_func(user_fun, *args, **kwargs):
+    pass
         
     
 # Main
